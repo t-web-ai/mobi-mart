@@ -1,0 +1,31 @@
+user_id;total_price;shipping_address;payment;status
+1;299.99;123 Yangon St, Yangon;KPAY;pending
+2;599.50;456 Mandalay Rd, Mandalay;WAVE;confirmed
+1;129.99;123 Yangon St, Yangon;CASH ON DELIVERY;delivered
+3;450.00;789 Naypyidaw Ave, Naypyidaw;KPAY;pending
+4;210.50;321 Mandalay Rd, Mandalay;WAVE;confirmed
+5;129.99;159 Bago St, Bago;CASH ON DELIVERY;delivered
+6;310.00;753 Taunggyi Ln, Taunggyi;KPAY;pending
+7;430.75;852 Myeik Rd, Myeik;WAVE;confirmed
+8;150.00;951 Pathein St, Pathein;CASH ON DELIVERY;delivered
+9;280.99;147 Pyin Oo Lwin Rd, Pyin Oo Lwin;KPAY;pending
+10;320.00;369 Hpa-An Ave, Hpa-An;WAVE;confirmed
+1;198.99;123 Yangon St, Yangon;CASH ON DELIVERY;delivered
+2;450.50;456 Mandalay Rd, Mandalay;KPAY;pending
+3;299.99;789 Naypyidaw Ave, Naypyidaw;WAVE;confirmed
+4;175.00;321 Mandalay Rd, Mandalay;CASH ON DELIVERY;delivered
+5;250.00;159 Bago St, Bago;KPAY;pending
+6;399.99;753 Taunggyi Ln, Taunggyi;WAVE;confirmed
+7;289.99;852 Myeik Rd, Myeik;CASH ON DELIVERY;delivered
+8;349.50;951 Pathein St, Pathein;KPAY;pending
+9;420.00;147 Pyin Oo Lwin Rd, Pyin Oo Lwin;WAVE;confirmed
+10;279.99;369 Hpa-An Ave, Hpa-An;CASH ON DELIVERY;delivered
+1;315.00;123 Yangon St, Yangon;KPAY;pending
+2;199.99;456 Mandalay Rd, Mandalay;WAVE;confirmed
+3;289.99;789 Naypyidaw Ave, Naypyidaw;CASH ON DELIVERY;delivered
+4;329.50;321 Mandalay Rd, Mandalay;KPAY;pending
+5;255.00;159 Bago St, Bago;WAVE;confirmed
+6;410.00;753 Taunggyi Ln, Taunggyi;CASH ON DELIVERY;delivered
+7;299.99;852 Myeik Rd, Myeik;KPAY;pending
+8;230.99;951 Pathein St, Pathein;WAVE;confirmed
+9;350.50;147 Pyin Oo Lwin Rd, Pyin Oo Lwin;CASH ON DELIVERY;delivered

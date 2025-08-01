@@ -1,0 +1,5 @@
+name;email;password
+Admin;admin@example.com;12345678
+Super Admin;superadmin@example.com;12345678
+Manager;manager@example.com;12345678
+Support;support@example.com;12345678
