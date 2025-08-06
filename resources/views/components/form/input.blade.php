@@ -3,8 +3,8 @@
     'placeholder' => '',
     'name' => '',
 ])
-<div class="mb-3">
-  <label class="form-label fs-5">{{ $slot }}</label>
+<div class="mt-2">
+  <label class="form-label fs-5 mb-0">{{ $slot }}</label>
   <div class="position-relative">
     <input type="{{ $type }}" class="form-control rounded fs-5" placeholder="{{ $placeholder }}"
       name="{{ $name }}" value="{{ old("$name") }}" required />
@@ -21,16 +21,14 @@
   <x-form.error error="{{ $name }}" />
 </div>
 
-@section('customize-js')
-  <script>
-    function toggle(e) {
-      e.classList.toggle('bi-eye-slash');
-      const inputBox = e.parentElement.parentElement.children[0];
-      if (inputBox.type == "password") {
-        inputBox.type = "text";
-        return;
-      }
-      inputBox.type = "password";
+<script>
+  function toggle(e) {
+    e.classList.toggle('bi-eye-slash');
+    const inputBox = e.parentElement.parentElement.children[0];
+    if (inputBox.type == "password") {
+      inputBox.type = "text";
+      return;
     }
-  </script>
-@endsection
+    inputBox.type = "password";
+  }
+</script>

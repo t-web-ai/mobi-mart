@@ -9,7 +9,7 @@
         <x-auth.admin.sidebar.nav-item logo="bi bi-clipboard-data-fill" route="admin.dashboard" :active="Request::is('admin/dashboard')">
           <div>Dashbord</div>
         </x-auth.admin.sidebar.nav-item>
-        <x-auth.admin.sidebar.nav-item logo="bi bi-bag-fill" route="admin.products" :active="Request::is('admin/products')">
+        <x-auth.admin.sidebar.nav-item logo="bi bi-bag-fill" route="admin.products" :active="Request::is('admin/products*')">
           <div>Products</div>
         </x-auth.admin.sidebar.nav-item>
         <x-auth.admin.sidebar.nav-item logo="bi bi-people-fill" route="admin.users" :active="Request::is('admin/users')">

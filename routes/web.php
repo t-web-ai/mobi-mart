@@ -23,4 +23,15 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     Route::get('/orders', [OrderListController::class, 'index'])->name('orders');
     Route::get('/setting', [AdminController::class, 'setting'])->name('setting');
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+    // brand > devices
+    Route::get('/products/brands/{brand}', [ProductListController::class, 'brand_devices'])->name('products.brands');
+
+    // search devices 
+    Route::get('/products/search', [ProductListController::class, 'products_search'])->name('products.search');
+    Route::get('/products/brands/{brand}/search', [ProductListController::class, 'products_brands_search'])->name('products.brands.search');
+
+    // add new 
+    Route::get('/products/variant/add', [ProductListController::class, 'add_variant_view'])->name('products.variant.add');
+    Route::post('/products/variant/add', [ProductListController::class, 'add_variant'])->name('products.variant.add');
 });

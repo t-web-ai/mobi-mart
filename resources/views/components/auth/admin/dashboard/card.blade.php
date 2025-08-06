@@ -6,7 +6,7 @@
 
 <div class="p-3 col-12 col-sm-12 col-md-6 col-lg-4 flex-grow-1">
   <a href="{{ route($link) }}" class="text-decoration-none">
-    <div class="card shadow-sm bg-secondary-subtle border-0 rounded-4 px-3">
+    <div class="card shadow-sm bg-light-subtle border-0 rounded-4 px-3">
       <div class="card-body d-flex align-items-center justify-content-between gap-3">
         <div>
           <i class="{{ $logo }}" style="font-size: 3rem;"></i>

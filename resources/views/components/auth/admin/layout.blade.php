@@ -43,13 +43,13 @@
       padding-left: 0;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1100px) {
       #main-content.shifted {
         margin-left: 0;
       }
     }
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 1100px) {
       #main-content.shifted {
         margin-left: var(--sidebar-width);
       }
