@@ -5,8 +5,12 @@
 </style>
 <x-auth.admin.layout title="Manage Products" name="Brands">
   <div class="p-4">
-    <form method="post" action="{{ route('admin.products.brand.add') }}">
+    <form method="post"
+      action="{{ session()->has('update') ? route('admin.products.brands.update', session('update')['id']) : route('admin.products.brand.add') }}">
       @csrf
+      @if (session()->has('update'))
+        @method('PUT')
+      @endif
       <div class="container bg-light-subtle shadow p-5 rounded mb-5 mt-5 col-12 col-md-8 col-lg-6">
         <div class="row">
           <div class="row">
@@ -15,7 +19,7 @@
                 <div class="alert alert-success fs-5">{{ session('success') }}</div>
               @endif
             </div>
-            <h2 class="mb-4">Add New Brand</h2>
+            <h2 class="mb-4">{{ session()->has('update') ? 'Update' : 'Add New' }} Brand</h2>
             <div class="col-12">
               <x-form.input type="text" placeholder="e.g. Xiaomi" name="name">Name</x-form.input>
             </div>

@@ -6,8 +6,12 @@
 
 <x-auth.admin.layout title="Manage Products" name="Devices">
   <div class="p-4">
-    <form method="post" action="{{ route('admin.products.device.add') }}">
+    <form method="post"
+      action="{{ session()->has('update') ? route('admin.products.devices.update', session('update')['id']) : route('admin.products.device.add') }}">
       @csrf
+      @if (session()->has('update'))
+        @method('PUT')
+      @endif
       <div class="container bg-light-subtle shadow p-5 rounded mb-5 mt-5 col-12 col-sm-10 col-md-8">
         <div class="row">
           <div class="col-12">
@@ -15,7 +19,7 @@
               <div class="alert alert-success fs-5">{{ session('success') }}</div>
             @endif
           </div>
-          <h2 class="mb-4">Add New Device</h2>
+          <h2 class="mb-4">{{ session()->has('update') ? 'Update' : 'Add New' }} Device</h2>
 
           <div class="col-12 col-lg-6">
             <x-form.tom :options="$brands" name="brand" placeholder="Choose brand...">Brand</x-form.tom>

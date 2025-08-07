@@ -5,8 +5,13 @@
 </style>
 <x-auth.admin.layout title="Manage Products" name="{{ isset($brand) ? $brand->name : '' }} Products">
   <div class="p-4">
-    <form method="post" action="{{ route('admin.products.variant.add') }}">
+    <form method="post"
+      action="{{ session()->has('update') ? route('admin.products.variants.update', session('update')['id']) : route('admin.products.variant.add') }}">
       @csrf
+      @if (session()->has('update'))
+        @method('PUT')
+      @endif
+
       <div class="container bg-light-subtle shadow p-5 rounded mb-5 mt-5 col-12 col-sm-10 col-md-8">
         <div class="row">
           <div class="row">
@@ -15,10 +20,10 @@
                 <div class="alert alert-success fs-5">{{ session('success') }}</div>
               @endif
             </div>
-            <h2 class="mb-4">Add New Variant</h2>
+            <h2 class="mb-4">{{ session()->has('update') ? 'Update' : 'Add New' }} Variant</h2>
 
             <div class="col-12 col-lg-6">
-              <x-form.tom :options="$devices" name="brand" placeholder="Choose device...">Device</x-form.tom>
+              <x-form.tom :options="$devices" name="device" placeholder="Choose device...">Device</x-form.tom>
             </div>
             <div class="col-12 col-lg-6">
               <x-form.tom :options="$colors" name="color" placeholder="Choose color...">Color</x-form.tom>

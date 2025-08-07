@@ -86,6 +86,10 @@
     #menu-bar {
       height: 75px;
     }
+
+    body::-webkit-scrollbar {
+      width: 0;
+    }
   </style>
 @endsection
 @section('main')

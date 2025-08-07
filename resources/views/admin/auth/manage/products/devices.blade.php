@@ -1,8 +1,3 @@
-<style>
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-</style>
 <x-auth.admin.layout title="Manage Products" name="Devices">
 
   <div class="p-3 row">

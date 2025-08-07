@@ -7,7 +7,8 @@
   <label class="form-label fs-5 mb-0">{{ $slot }}</label>
   <div class="position-relative">
     <input type="{{ $type }}" class="form-control rounded fs-5" placeholder="{{ $placeholder }}"
-      name="{{ $name }}" value="{{ old("$name") }}" required />
+      name="{{ $name }}" value="{{ session()->has('update') ? session('update')[$name] : old("$name") }}"
+      required />
 
     {{-- password toggler - start --}}
     @if ($type == 'password')

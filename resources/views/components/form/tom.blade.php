@@ -11,7 +11,8 @@
     <select id="{{ $name }}" name="{{ $name }}">
       <option hidden selected disabled></option>
       @foreach ($options as $device)
-        <option value="{{ $device['id'] }}" {{ old($name) == $device['id'] ? 'selected' : '' }}>
+        <option value="{{ $device['id'] }}" {{ old($name) == $device['id'] ? 'selected' : '' }}
+          {{ session()->has('update') ? (session('update')[$name] == $device['id'] ? 'selected' : '') : '' }}>
           {{ $device['name'] }}
         </option>
       @endforeach

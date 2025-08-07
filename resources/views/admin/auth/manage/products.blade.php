@@ -1,8 +1,3 @@
-<style>
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-</style>
 <x-auth.admin.layout title="Manage Products" name="{{ isset($brand) ? $brand->name : '' }} Products">
 
   <div class="p-3 row">
@@ -30,7 +25,7 @@
           <x-auth.admin.products.brand :active="Request::is('admin/products') || Request::is('admin/products/search')" link="admin/products">All</x-auth.admin.products.brand>
           @foreach ($brands as $brand)
             <x-auth.admin.products.brand id="{{ $brand->id }}" :active="Request::is('admin/products/brands/' . $brand->id) ||
-                Request::is('admin/proudcts/brands/' . $brand->id . '/search')"
+                Request::is('admin/products/brands/' . $brand->id . '/search')"
               link="admin/products/brands/{{ $brand->id }}">{{ $brand->name }}</x-auth.admin.products.brand>
           @endforeach
         </div>

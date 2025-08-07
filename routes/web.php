@@ -54,4 +54,23 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     Route::get('/products/device/search', [DeviceController::class, 'search'])->name('products.devices.search');
     Route::get('/products/device/add', [DeviceController::class, 'form'])->name('products.device.add');
     Route::post('products/device/add', [DeviceController::class, 'store'])->name('products.device.add');
+
+    // delete brand, color, device, variant
+    Route::delete('/products/brands/{brand}/delete', [BrandController::class, 'destroy'])->name('products.brands.delete');
+    Route::delete('/products/colors/{color}/delete', [ColorController::class, 'destroy'])->name('products.colors.delete');
+    Route::delete('/products/devices/{device}/delete', [DeviceController::class, 'destroy'])->name('products.devices.delete');
+    Route::delete('/products/variants/{variant}/delete', [ProductListController::class, 'destroy'])->name('products.variants.delete');
+
+    // update brand, color, device, variant
+    Route::get('/products/brands/{brand}/update', [BrandController::class, 'update_form'])->name('products.brands.update');
+    Route::put('/products/brands/{brand}/update', [BrandController::class, 'update'])->name('products.brands.update');
+
+    Route::get('/products/colors/{color}/update', [ColorController::class, 'update_form'])->name('products.colors.update');
+    Route::put('/products/colors/{color}/update', [ColorController::class, 'update'])->name('products.colors.update');
+
+    Route::get('/products/devices/{device}/update', [DeviceController::class, 'update_form'])->name('products.devices.update');
+    Route::put('/products/devices/{device}/update', [DeviceController::class, 'update'])->name('products.devices.update');
+
+    Route::get('/products/variants/{variant}/update', [ProductListController::class, 'update_form'])->name('products.variants.update');
+    Route::put('/products/variants/{variant}/update', [ProductListController::class, 'update'])->name('products.variants.update');
 });
