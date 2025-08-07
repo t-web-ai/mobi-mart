@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\ColorController;
+use App\Http\Controllers\admin\DeviceController;
 use App\Http\Controllers\admin\OrderListController;
 use App\Http\Controllers\admin\ProductListController;
 use App\Http\Controllers\admin\UserListController;
 use App\Http\Middleware\admin\IsAdmin;
 use App\Http\Middleware\admin\IsGuest;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->middleware([IsGuest::class])->group(function () {
@@ -29,9 +33,25 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
 
     // search devices 
     Route::get('/products/search', [ProductListController::class, 'products_search'])->name('products.search');
-    Route::get('/products/brands/{brand}/search', [ProductListController::class, 'products_brands_search'])->name('products.brands.search');
+    Route::get('/products/brands/{brand}/search', [ProductListController::class, 'products_brands_search'])->name('products.brands.search.id');
 
     // add new 
     Route::get('/products/variant/add', [ProductListController::class, 'add_variant_view'])->name('products.variant.add');
     Route::post('/products/variant/add', [ProductListController::class, 'add_variant'])->name('products.variant.add');
+
+    // product view 
+    Route::get('/products/colors', [ColorController::class, 'index'])->name('products.colors');
+    Route::get('/products/color/search', [ColorController::class, 'search'])->name('products.colors.search');
+    Route::get('/products/color/add', [ColorController::class, 'form'])->name('products.color.add');
+    Route::post('products/color/add', [ColorController::class, 'store'])->name('products.color.add');
+
+    Route::get('/products/brands', [BrandController::class, 'index'])->name('products.brands');
+    Route::get('/products/brand/search', [BrandController::class, 'search'])->name('products.brands.search');
+    Route::get('/products/brand/add', [BrandController::class, 'form'])->name('products.brand.add');
+    Route::post('products/brand/add', [BrandController::class, 'store'])->name('products.brand.add');
+
+    Route::get('/products/devices', [DeviceController::class, 'index'])->name('products.devices');
+    Route::get('/products/device/search', [DeviceController::class, 'search'])->name('products.devices.search');
+    Route::get('/products/device/add', [DeviceController::class, 'form'])->name('products.device.add');
+    Route::post('products/device/add', [DeviceController::class, 'store'])->name('products.device.add');
 });
