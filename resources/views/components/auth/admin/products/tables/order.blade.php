@@ -17,7 +17,8 @@
           <x-auth.admin.products.data data="{{ $order->user->name }}" />
           <td>
             @foreach ($order->device_variants as $item)
-              <div class="text-truncate small bg-success-subtle py-1 px-4 rounded-pill text-center mt-1 d-inline-block">
+              <div
+                class="text-truncate small bg-success-subtle py-1 px-4 rounded-pill text-center mt-1 d-inline-block fs-5">
                 {{ $item->device->name }}
               </div><br>
             @endforeach

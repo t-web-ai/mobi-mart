@@ -25,6 +25,7 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     Route::get('/sales', [OrderListController::class, 'sales'])->name('sales');
     Route::get('/popular', [OrderListController::class, 'popular'])->name('popular');
     Route::get('/orders', [OrderListController::class, 'index'])->name('orders');
+    Route::post('/orders', [OrderListController::class, 'index'])->name('orders');
     Route::get('/setting', [AdminController::class, 'setting'])->name('setting');
     Route::get('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 

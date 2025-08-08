@@ -3,27 +3,33 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Device;
 use App\Models\DeviceVariantOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderListController extends Controller
 {
     public function index(Request $request)
     {
-        $date = $request->query('date');
-        $status = $request->query('status');
-        $filter = $request->query('filter');
-        $search = $request->query('q');
+        Session::forget('update');
+        $date = $request->input('date');
+        $status = $request->input('status');
+        $brand = $request->input('brand');
+        $search = $request->input('q');
+        Session::flash("update", [
+            "brand" => $brand
+        ]);
         $orders = Order::with('device_variants.device', 'device_variant_orders', 'user')
-            ->when($filter == "username", function ($q) use ($search) {
-                $q->whereHas('user', function ($query) use ($search) {
-                    $query->where("name", "like", "%$search%");
+            ->when($brand, function ($q) use ($brand) {
+                $q->whereHas('device_variants', function ($q) use ($brand) {
+                    $q->where('device_id', $brand);
                 });
             })
-            ->when($filter == "device", function ($q) use ($search) {
-                $q->whereHas('device_variants.device', function ($query) use ($search) {
-                    $query->where("name", "like", "%$search%");
+            ->when($search, function ($q) use ($search) {
+                $q->whereHas("user", function ($q) use ($search) {
+                    $q->where("name", "like", "%$search%");
                 });
             })
             ->when($date, function ($q) use ($date) {
@@ -34,13 +40,18 @@ class OrderListController extends Controller
             })
             ->paginate(10)
             ->appends([
-                'q' => $request->query('q'),
-                'filter' => $request->query('filter'),
+                'q' => $search,
+                'brand' => $brand,
                 'status' => $status,
                 'date' => $date
             ]);
         return view("admin.auth.manage.orders", [
-            "orders" => $orders
+            "orders" => $orders,
+            "devices" => Device::all(),
+            "q" => $search,
+            "brand" => $brand,
+            "status" => $status,
+            "date" => $date
         ]);
     }
 

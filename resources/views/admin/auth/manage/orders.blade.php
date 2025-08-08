@@ -3,13 +3,11 @@
   <div class="p-3 row">
     {{-- search box - start --}}
 
-    <form action="{{ route('admin.orders') }}" method="GET">
+    <form action="{{ route('admin.orders') }}" method="POST" class="mb-4">
+      @csrf
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center">
-          <select name="filter" class="form-select fs-5 mt-2 border-2">
-            <option value="username" {{ request('filter') == 'username' ? 'selected' : '' }}>Username</option>
-            <option value="device" {{ request('filter') == 'device' ? 'selected' : '' }}>Device</option>
-          </select>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center mb-sm-4">
+          <x-form.tom :options="$devices" name="brand" placeholder="Choose model" />
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center">
           <select name="status" class="form-select fs-5 mt-2 border-2">
@@ -19,17 +17,19 @@
             <option value="delivered" {{ request('status') == 'delivered' ? 'selected' : '' }}>Delivered</option>
           </select>
         </div>
-        <div class="col-12
-              col-sm-12 col-md-4 col-lg-2 align-content-center">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 align-content-center">
           <input type="date" name="date" class="form-control fs-5 mt-2 border-2" value="{{ request('date') }}">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 align-content-center">
           <div class="input-group mt-2">
             <input type="search" name="q" placeholder="e.g. Mi A2 Lite" class="form-control fs-5 border-2 border"
-              value="{{ request()->query('q') }}" style="box-shadow: none; border-color: #ced4da; outline: none;">
+              value="{{ request('q') }}" style="box-shadow: none; border-color: #ced4da; outline: none;">
             <button class="btn btn-warning fs-5">
               <i class="bi bi-search"></i>
             </button>
+            <a href="{{ route('admin.orders') }}" class="btn btn-danger fs-5">
+              <i class="bi bi-x-lg"></i>
+            </a>
           </div>
         </div>
       </div>
