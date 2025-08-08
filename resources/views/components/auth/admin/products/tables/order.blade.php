@@ -1,0 +1,70 @@
+@props(['orders' => []])
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <tbody>
+      <tr class="text-center fs-5">
+        <th>ID</th>
+        <th>User</th>
+        <th>Device</th>
+        <th>Shipping Address</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+      @foreach ($orders as $order)
+        <tr>
+          <x-auth.admin.products.data data="{{ $order->id }}" />
+          <x-auth.admin.products.data data="{{ $order->user->name }}" />
+          <td>
+            @foreach ($order->device_variants as $item)
+              <div class="text-truncate small bg-success-subtle py-1 px-4 rounded-pill text-center mt-1 d-inline-block">
+                {{ $item->device->name }}
+              </div><br>
+            @endforeach
+          </td>
+          <x-auth.admin.products.data data="{{ $order->shipping_address }}" />
+          <x-auth.admin.products.data data="{{ ucfirst($order->status) }}" />
+          <x-auth.admin.products.data data="{{ $order->created_at->diffForHumans() }}" />
+          <x-auth.admin.products.data>
+            <div class="d-flex justify-content-end gap-2 m-auto">
+              @if ($order->status != 'confirmed')
+                <x-auth.admin.products.modal logo="bi bi-check-square" background="btn-warning" header="Confirm Box"
+                  target="update_id_{{ $order->id }}">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="fs-5">
+                      <button class="fs-5 btn" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                    <form action="{{ route('admin.products.orders.confirm', $order->id) }}"
+                      id="update_confirm_id_{{ $order->id }}" method="POST">
+                      @csrf
+                      @method('PUT')
+                    </form>
+                    <div class="fs-5 d-flex align-items-center">
+                      <button class="fs-5 btn btn-success" form="update_confirm_id_{{ $order->id }}">Ok</button>
+                    </div>
+                  </div>
+                </x-auth.admin.products.modal>
+              @endif
+              <x-auth.admin.products.modal logo="bi bi-trash" background="btn-danger" header="Deletion"
+                target="delete_id_{{ $order->id }}">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="fs-5">
+                    <button class="fs-5 btn" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                  <form action="{{ route('admin.products.orders.delete', $order->id) }}"
+                    id="delete_confirm_id_{{ $order->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                  </form>
+                  <div class="fs-5 d-flex align-items-center">
+                    <button class="fs-5 btn btn-danger" form="delete_confirm_id_{{ $order->id }}">Confirm</button>
+                  </div>
+                </div>
+              </x-auth.admin.products.modal>
+            </div>
+          </x-auth.admin.products.data>
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>

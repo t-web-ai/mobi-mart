@@ -6,7 +6,8 @@
 <x-auth.admin.layout title="Manage Products" name="{{ isset($brand) ? $brand->name : '' }} Products">
   <div class="p-4">
     <form method="post"
-      action="{{ session()->has('update') ? route('admin.products.variants.update', session('update')['id']) : route('admin.products.variant.add') }}">
+      action="{{ session()->has('update') ? route('admin.products.variants.update', session('update')['id']) : route('admin.products.variant.add') }}"
+      enctype="multipart/form-data">
       @csrf
       @if (session()->has('update'))
         @method('PUT')
@@ -42,6 +43,13 @@
             </div>
             <div class="col-12 col-md-12">
               <x-form.input type="number" placeholder="e.g. 20" name="stock">Stock</x-form.input>
+            </div>
+            <div class="col-12 col-md-12">
+              <x-form.image type="file" placeholder="e.g. 20" name="main_image">Main Image</x-form.image>
+            </div>
+            <div class="col-12 col-md-12">
+              <x-form.image type="file" placeholder="e.g. 20" name="other_images[]" :multiple="true">Other
+                images</x-form.image>
             </div>
             <div class="mt-4 text-start d-flex justify-content-between">
               <input type="submit" value="Submit" class="fs-5 btn btn-primary">

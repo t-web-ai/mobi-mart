@@ -20,6 +20,10 @@ class Order extends Model
     {
         return $this->belongsToMany(DeviceVariant::class, DeviceVariantOrder::class);
     }
+    public function device_variant_orders()
+    {
+        return $this->hasMany(DeviceVariantOrder::class);
+    }
 
     public function user()
     {

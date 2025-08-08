@@ -73,4 +73,8 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
 
     Route::get('/products/variants/{variant}/update', [ProductListController::class, 'update_form'])->name('products.variants.update');
     Route::put('/products/variants/{variant}/update', [ProductListController::class, 'update'])->name('products.variants.update');
+
+    // Order deleting
+    Route::delete('/products/orders/{order}/delete', [OrderListController::class, 'destroy'])->name('products.orders.delete');
+    Route::put('/products/orders/{order}/confirm', [OrderListController::class, 'confirm'])->name('products.orders.confirm');
 });
