@@ -18,8 +18,8 @@
     <form action="{{ route('admin.users') }}" method="GET">
       {{-- search box - start --}}
       <div class="row">
-        <div class="col-12 align-content-center fs-5">
-          <div class="px-2">Filter By</div>
+        <div class="col-12 align-content-center">
+          <div class="px-2 fs-5">Filter <i class="bi bi-funnel-fill"></i></div>
         </div>
         <div class="col-4 col-md-2 align-content-center">
           <input type="radio" name="filter" id="username" value="username"

@@ -5,6 +5,7 @@
       <tr class="text-center fs-5">
         <th style="width: 1px">ID</th>
         <th>Name</th>
+        <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
         <th style="width: 1px">Action</th>
@@ -14,6 +15,7 @@
         <tr>
           <x-auth.admin.products.data data="{{ $user->id }}" />
           <x-auth.admin.products.data data="{{ $user->name }}" />
+          <x-auth.admin.products.data data="{{ $user->phone }}" />
           <x-auth.admin.products.data data="{{ $user->email }}" />
           <x-auth.admin.products.data data="{{ $user->address }}" />
           <x-auth.admin.products.data data="{{ $user->created_at->diffForHumans() }}" />
