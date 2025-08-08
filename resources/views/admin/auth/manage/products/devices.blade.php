@@ -2,7 +2,7 @@
 
   <div class="p-3 row">
     {{-- search box - start --}}
-    <div class="col-12 col-md-6 col-lg-8 align-content-center">
+    <div class="col-12 col-md-6 col-lg-8 align-content-center mb-5">
       <form action="{{ route('admin.products.devices.search') }}" method="GET">
         <div class="input-group mt-2">
           <input type="search" name="q" placeholder="e.g. Mi A2 Lite" class="form-control fs-5 border-2 border"

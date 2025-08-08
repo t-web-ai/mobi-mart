@@ -2,7 +2,7 @@
 
   <div class="p-3 row">
     {{-- search box - start --}}
-    <div class="col-12 col-sm-12 col-md-6 align-content-center">
+    <div class="col-12 col-sm-12 col-md-6 align-content-center mb-5">
       <form
         action="{{ isset($brand) ? route('admin.products.brands.search.id', $brand->id) : route('admin.products.search') }}"
         method="GET">
