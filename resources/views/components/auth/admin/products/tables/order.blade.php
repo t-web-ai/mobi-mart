@@ -34,7 +34,7 @@
                     <div class="fs-5">
                       <button class="fs-5 btn" data-bs-dismiss="modal">Cancel</button>
                     </div>
-                    <form action="{{ route('admin.products.orders.confirm', $order->id) }}"
+                    <form action="{{ route('admin.orders.confirm', $order->id) }}"
                       id="update_confirm_id_{{ $order->id }}" method="POST">
                       @csrf
                       @method('PUT')
@@ -51,7 +51,7 @@
                   <div class="fs-5">
                     <button class="fs-5 btn" data-bs-dismiss="modal">Cancel</button>
                   </div>
-                  <form action="{{ route('admin.products.orders.delete', $order->id) }}"
+                  <form action="{{ route('admin.orders.delete', $order->id) }}"
                     id="delete_confirm_id_{{ $order->id }}" method="POST">
                     @csrf
                     @method('DELETE')
