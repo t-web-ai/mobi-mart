@@ -14,7 +14,7 @@
       @foreach ($orders as $order)
         <tr>
           <x-auth.admin.products.data data="{{ $order->id }}" />
-          <x-auth.admin.products.data data="{{ $order->user->name }}" />
+          <x-auth.admin.products.data data="{{ $order->user->name ?? 'Deleted Account' }}" />
           <td>
             @foreach ($order->device_variants as $item)
               <div

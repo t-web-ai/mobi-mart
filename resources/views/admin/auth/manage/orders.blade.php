@@ -3,8 +3,7 @@
   <div class="p-3 row">
     {{-- search box - start --}}
 
-    <form action="{{ route('admin.orders') }}" method="POST" class="mb-4">
-      @csrf
+    <form action="{{ route('admin.orders') }}" method="GET" class="mb-4">
       <div class="row">
         <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center mb-sm-4">
           <x-form.tom :options="$devices" name="brand" placeholder="Choose model" />
@@ -27,7 +26,7 @@
             <button class="btn btn-warning fs-5">
               <i class="bi bi-search"></i>
             </button>
-            <a href="{{ route('admin.orders') }}" class="btn btn-danger fs-5">
+            <a href="{{ route('admin.orders') }}" class="btn bg-secondary-subtle fs-5">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>

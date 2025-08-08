@@ -14,10 +14,10 @@ class OrderListController extends Controller
     public function index(Request $request)
     {
         Session::forget('update');
-        $date = $request->input('date');
-        $status = $request->input('status');
-        $brand = $request->input('brand');
-        $search = $request->input('q');
+        $date = $request->date;
+        $status = $request->status;
+        $brand = $request->brand;
+        $search = $request->q;
         Session::flash("update", [
             "brand" => $brand
         ]);

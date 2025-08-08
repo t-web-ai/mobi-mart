@@ -22,6 +22,9 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/products', [ProductListController::class, 'index'])->name('products');
     Route::get('/users', [UserListController::class, 'index'])->name('users');
+    Route::post('/users', [UserListController::class, 'index'])->name('users');
+    Route::delete('users/{user}/delete', [UserListController::class, 'destroy'])->name('users.delete');
+
     Route::get('/sales', [OrderListController::class, 'sales'])->name('sales');
     Route::get('/popular', [OrderListController::class, 'popular'])->name('popular');
     Route::get('/orders', [OrderListController::class, 'index'])->name('orders');
