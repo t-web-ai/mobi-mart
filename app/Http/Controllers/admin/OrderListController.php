@@ -69,7 +69,14 @@ class OrderListController extends Controller
 
     public function sales()
     {
-        return view("admin.auth.manage.sales");
+        $sale = DeviceVariantOrder::sum('quantity');
+        $order = Order::count('id');
+        $total = DeviceVariantOrder::sum('price');
+        return view("admin.auth.manage.sales", [
+            'sale' => $sale,
+            'order' => $order,
+            'total' => $total
+        ]);
     }
     public function popular()
     {
