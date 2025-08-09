@@ -81,4 +81,7 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     // Order deleting
     Route::delete('/orders/{order}/delete', [OrderListController::class, 'destroy'])->name('orders.delete');
     Route::put('/orders/{order}/confirm', [OrderListController::class, 'confirm'])->name('orders.confirm');
+
+    // Change password 
+    Route::put('/setting/password/change', [AdminAuthController::class, 'change_password'])->name('setting.password.change');
 });

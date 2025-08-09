@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AdminAuthController extends Controller
@@ -26,6 +28,29 @@ class AdminAuthController extends Controller
         // redirect 
         return redirect(route("admin.dashboard"))->with([
             "authentication" => "You are now logged in!"
+        ]);
+    }
+
+    public function change_password(Request $request)
+    {
+        // validate 
+        $request->validate([
+            "old" => ["required", "string", "min:8"],
+            "password" => ["required", "string", "min:8", "different:old"]
+        ]);
+        // update 
+        $admin = Auth::guard('admin')->user();
+        if (!Hash::check($request->old, $admin->password)) {
+            throw ValidationException::withMessages([
+                "error" => "Fill the correct password"
+            ]);
+        }
+        $auth = Admin::find($admin->id);
+        $auth->update([
+            "password" => $request->password
+        ]);
+        return back()->with([
+            "success" => "Successfully updated your password"
         ]);
     }
 

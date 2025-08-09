@@ -31,7 +31,8 @@
             <button class="btn btn-warning fs-5 border-end border-1">
               <i class="bi bi-search"></i>
             </button>
-            <a href="{{ route('admin.orders') }}" class="btn btn-warning border-start border-1 fs-5">
+            <a href="{{ route('admin.orders') }}"
+              class="btn btn-warning border-start d-flex align-items-center border-1 fs-5">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
