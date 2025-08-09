@@ -1,3 +1,8 @@
+<style>
+  .ts-dropdown-content::-webkit-scrollbar {
+    width: 0;
+  }
+</style>
 <x-auth.admin.layout title="Manage Products" name="Orders">
 
   <div class="p-3 row">
@@ -5,7 +10,7 @@
 
     <form action="{{ route('admin.orders') }}" method="GET" class="mb-4">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center mb-sm-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center">
           <x-form.tom :options="$devices" name="brand" placeholder="Choose model" />
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-2 align-content-center">
@@ -23,10 +28,10 @@
           <div class="input-group mt-2">
             <input type="search" name="q" placeholder="e.g. Mi A2 Lite" class="form-control fs-5 border-2 border"
               value="{{ request('q') }}" style="box-shadow: none; border-color: #ced4da; outline: none;">
-            <button class="btn btn-warning fs-5">
+            <button class="btn btn-warning fs-5 border-end border-1">
               <i class="bi bi-search"></i>
             </button>
-            <a href="{{ route('admin.orders') }}" class="btn bg-secondary-subtle fs-5">
+            <a href="{{ route('admin.orders') }}" class="btn btn-warning border-start border-1 fs-5">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>

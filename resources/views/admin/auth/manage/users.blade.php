@@ -49,10 +49,10 @@
           <div class="input-group mb-3">
             <input type="search" name="q" placeholder="e.g. John Doe" class="form-control fs-5 border-2 border"
               value="{{ request('q') }}" style="box-shadow: none; border-color: #ced4da; outline: none;">
-            <button class="btn btn-warning fs-5">
+            <button class="btn btn-warning fs-5 border-end border-1">
               <i class="bi bi-search"></i>
             </button>
-            <a href="{{ route('admin.users') }}" class="btn bg-secondary-subtle fs-5">
+            <a href="{{ route('admin.users') }}" class="btn btn-warning border-start border-1 fs-5">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
