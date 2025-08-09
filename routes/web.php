@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DeviceController;
 use App\Http\Controllers\admin\OrderListController;
 use App\Http\Controllers\admin\ProductListController;
 use App\Http\Controllers\admin\UserListController;
+use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\admin\IsAdmin;
 use App\Http\Middleware\admin\IsGuest;
 use App\Models\Brand;
@@ -85,3 +86,7 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
     // Change password 
     Route::put('/setting/password/change', [AdminAuthController::class, 'change_password'])->name('setting.password.change');
 });
+
+
+// user's routers
+Route::get('/', [UserController::class, 'index'])->name('user');
