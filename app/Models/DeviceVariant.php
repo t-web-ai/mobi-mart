@@ -37,4 +37,9 @@ class DeviceVariant extends Model
     {
         return $this->belongsToMany(Order::class, DeviceVariantOrder::class);
     }
+
+    public function device_variant_orders()
+    {
+        return $this->hasMany(DeviceVariantOrder::class);
+    }
 }

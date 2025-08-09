@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use App\Models\DeviceVariant;
 use App\Models\DeviceVariantOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -80,6 +81,16 @@ class OrderListController extends Controller
     }
     public function popular()
     {
-        return view("admin.auth.manage.popular");
+        $variant = DeviceVariantOrder::with('device_variant')->get();
+        $popular = $variant->groupBy('device_variant_id')->map(function ($item) {
+            return [
+                "device" => DeviceVariant::find($item->first()->device_variant_id)->device->name,
+                "quantity" => $item->sum('quantity'),
+                "sale" => $item->sum('price')
+            ];
+        })->sortByDesc(['quantity', 'sale']);
+        return view("admin.auth.manage.popular", [
+            "devices" => $popular
+        ]);
     }
 }

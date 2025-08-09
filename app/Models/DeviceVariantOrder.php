@@ -20,4 +20,9 @@ class DeviceVariantOrder extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function device_variant()
+    {
+        return $this->belongsTo(DeviceVariant::class);
+    }
 }
