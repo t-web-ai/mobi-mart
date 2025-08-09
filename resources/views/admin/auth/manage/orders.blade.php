@@ -3,7 +3,7 @@
     width: 0;
   }
 </style>
-<x-auth.admin.layout title="Manage Products" name="Orders">
+<x-auth.admin.layout title="Manage Orders" name="Orders">
 
   <div class="p-3 row">
     {{-- search box - start --}}

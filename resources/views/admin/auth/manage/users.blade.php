@@ -1,4 +1,4 @@
-<x-auth.admin.layout title="Manage Products" name="Users">
+<x-auth.admin.layout title="Manage Users" name="Users">
   <style>
     input:checked+label>div {
       background-color: #FFC107;
@@ -45,8 +45,8 @@
             </div>
           </label>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 align-content-center">
-          <div class="input-group mb-3">
+        <div class="col-12 col-sm-12 col-md-6 align-content-center mb-1">
+          <div class="input-group mb-2">
             <input type="search" name="q" placeholder="e.g. John Doe" class="form-control fs-5 border-2 border"
               value="{{ request('q') }}" style="box-shadow: none; border-color: #ced4da; outline: none;">
             <button class="btn btn-warning fs-5 border-end border-1">

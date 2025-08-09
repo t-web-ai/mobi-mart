@@ -7,6 +7,7 @@ use App\Models\DeviceVariant;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminController extends Controller
     }
     public function setting()
     {
+        Session::forget('update');
         return view("admin.auth.manage.setting");
     }
 }

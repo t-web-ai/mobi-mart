@@ -13,7 +13,7 @@
       <i class="{{ $logo }}"></i>
     </span>
   @else
-    <div class="btn bg-light-subtle fs-5 shadow-sm d-flex justify-content-between gap-2 align-items-center mt-2"
+    <div class="btn bg-light-subtle fs-5 shadow-sm d-flex justify-content-between gap-2 align-items-center mt-2 py-2"
       data-bs-target="#{{ $target }}" data-bs-toggle="modal">
       <div>{{ $button }}</div>
       <span class="dropdown-toggle"></span>
