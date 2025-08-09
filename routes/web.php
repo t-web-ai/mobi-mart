@@ -90,3 +90,16 @@ Route::prefix('admin')->name('admin.')->middleware([IsAdmin::class])->group(func
 
 // user's routers
 Route::get('/', [UserController::class, 'index'])->name('user');
+
+// user login
+Route::get('/sign-in', [UserController::class, 'login_view'])->name('user.login');
+Route::post('/sign-in', [UserController::class, 'login'])->name('user.login');
+
+// user register 
+Route::get('/sign-up', [UserController::class, 'register_view'])->name('user.register');
+Route::post('/sign-up', [UserController::class, 'register'])->name('user.register');
+
+// user logout 
+Route::middleware('auth')->group(function () {
+    Route::get('/loguout', [UserController::class, 'logout'])->name('user.logout');
+});

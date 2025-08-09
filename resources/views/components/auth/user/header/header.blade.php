@@ -1,6 +1,6 @@
 <!-- menu bar - start -->
 <div class="d-flex bg-secondary-subtle flex-column sticky-top">
-  <div class="d-flex justify-content-between w-100 mt-3">
+  <div class="d-flex justify-content-between align-items-center w-100 mt-3">
     <div class="navbar navbar-expand-sm d-flex align-items-center">
       <div class="navbar-toggler mx-2 p-2 fs-5" data-bs-toggle="collapse" data-bs-target="#menu">
         <i class="bi bi-list"></i>
@@ -12,19 +12,30 @@
     <div class="d-flex align-items-center navbar navbar-expand">
       <div class="p-2 fs-5 navbar-brand">
         <a href="">
-          <i class="bi bi-bag text-body"></i>
+          <i class="bi bi-cart-dash text-body fs-2"></i>
         </a>
       </div>
-      <div class="p-2 fs-5 navbar-brand">
-        <a href="" class="text-decoration-none text-body">
-          <i class="bi bi-box-arrow-in-right"></i>
-        </a>
-      </div>
+      @guest
+        <div class="p-2 fs-5 navbar-brand">
+          <a href="{{ route('user.login') }}" class="text-decoration-none text-body">
+            <i class="bi bi-box-arrow-in-right fs-3"></i>
+          </a>
+        </div>
+      @endguest
+
       <div onclick="theme.change_theme(this)" class="me-3">
         <script>
           document.write(theme.get_theme_icon());
         </script>
       </div>
+
+      @auth
+        <div class="me-2" data-bs-toggle="modal" data-bs-target="#profile">
+          <div class="me-2 fs-5 text-muted bg-secondary-subtle border border-1 border-dark-subtle rounded-pill p-2">
+            <i class="bi bi-person-circle"></i>
+          </div>
+        </div>
+      @endauth
     </div>
   </div>
   <div class="navbar navbar-expand-sm">

@@ -93,18 +93,12 @@
       <button data-bs-slide-to="3" data-bs-target="#popular"></button>
     </div>
   </div>
-  <div class="d-flex justify-content-center flex-wrap gap-2 p-2">
+  <div class="d-flex justify-content-between flex-wrap gap-2 p-2">
     <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
-      <span>Cart</span>
+      <span>Brand Collection</span>
     </a>
     <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
-      <span>Collection</span>
-    </a>
-    <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
-      <span>History</span>
-    </a>
-    <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
-      <span>Get Started</span>
+      <span>Latest Devices</span>
     </a>
   </div>
   <!-- image slide - end -->
