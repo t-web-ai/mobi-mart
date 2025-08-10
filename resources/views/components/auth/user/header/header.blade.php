@@ -40,7 +40,7 @@
   </div>
   <div class="navbar navbar-expand-sm">
     <div class="collapse navbar-collapse" id="menu">
-      <form action="" class="w-100 px-3">
+      <form action="{{ route('brands.devices') }}" class="w-100 px-3">
         <div class="row">
           <div class="col-12 col-sm-4 col-md-3 col-lg-2">
             <div>

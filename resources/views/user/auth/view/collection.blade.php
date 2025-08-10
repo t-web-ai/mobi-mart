@@ -2,6 +2,9 @@
   .image {
     width: 100%;
     height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   .image>img {
@@ -16,7 +19,7 @@
     <div class="p-4">
       <div class="fs-5 bg-secondary-subtle px-2 ps-4 py-2 rounded d-flex justify-content-between align-items-center">
         <div>{{ $brand->name }} Models</div>
-        <a href="">
+        <a href="{{ url('brands/devices?brand=' . $brand->id) }}">
           <div class="btn btn-success fs-5">See All</div>
         </a>
       </div>
