@@ -114,4 +114,4 @@ Route::get('/brands/collection', [UserBrandController::class, 'index'])->name('b
 // latest devices 
 Route::get('/brands/devices', [UserDeviceController::class, 'index'])->name('brands.devices');
 // device details
-Route::get('/brands/devices/{device}/details', [UserDeviceController::class, 'details'])->name('brands.devices.details');
+Route::get('/brands/devices/{variant}/details', [UserDeviceController::class, 'details'])->name('brands.devices.details');

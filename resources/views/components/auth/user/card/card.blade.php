@@ -59,7 +59,8 @@
           </div>
           {{-- specification - end --}}
           <div class="d-flex rounded overflow-hidden">
-            <a href="" class="text-decoration-none text-black col-8 flex-grow-1">
+            <a href="{{ route('brands.devices.details', $variant->id) }}"
+              class="text-decoration-none text-black col-8 flex-grow-1">
               <div class="bg-warning fs-5 text-center py-2">
                 Details
               </div>
