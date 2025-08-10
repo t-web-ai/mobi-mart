@@ -24,9 +24,18 @@
         </a>
       </div>
       <div class="row p-1">
-        @foreach ($brand->devices as $device)
-          <x-auth.user.card.card :device="$device" />
-        @endforeach
+        @if (count($brand->devices))
+          @foreach ($brand->devices as $device)
+            <x-auth.user.card.card :device="$device" />
+          @endforeach
+        @else
+          <div class="mt-5 d-flex justify-content-center">
+            <div class="text-center p-4">
+              <h5 class="text-muted mb-0">No devices found.</h5>
+            </div>
+          </div>
+        @endif
+
       </div>
     </div>
   @endforeach

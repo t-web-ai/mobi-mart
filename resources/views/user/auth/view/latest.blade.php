@@ -16,11 +16,19 @@
 <x-auth.user.layout title="Brands Collections">
 
   <div class="p-4">
-    <div class="row p-1">
-      <x-auth.user.card.variant :variants="$variants" />
-    </div>
-    <div>
-      {{ $variants->links() }}
-    </div>
+    @if (count($variants))
+      <div class="row p-1">
+        <x-auth.user.card.variant :variants="$variants" />
+      </div>
+      <div>
+        {{ $variants->links() }}
+      </div>
+    @else
+      <div class="mt-5 d-flex justify-content-center">
+        <div class="text-center p-4">
+          <h5 class="text-muted mb-0">No devices found.</h5>
+        </div>
+      </div>
+    @endif
   </div>
 </x-auth.user.layout>

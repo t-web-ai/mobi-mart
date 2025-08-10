@@ -25,7 +25,7 @@
       <div class="navbar">
         <div class="navbar-nav">
           <div class="nav-item">
-            <a href="" class="nav-link">Collection</a>
+            <a href="{{ route('brands.collection') }}" class="nav-link">Collection</a>
           </div>
           <div class="nav-item">
             <a href="" class="nav-link">Cart</a>
