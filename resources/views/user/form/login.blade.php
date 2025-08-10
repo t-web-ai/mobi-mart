@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Admin : Login')
+@section('title', 'Login to MobiMart')
 @section('customize-css')
   <style>
     .auth-card {
@@ -40,7 +40,7 @@
             @error('authentication')
               <div class="alert alert-danger fs-5">{{ $message }}</div>
             @enderror
-            <form action="{{ route('user.login') }}" method="POST">
+            <form action="{{ route('login') }}" method="POST">
               @csrf
               <x-form.input type="email" placeholder="example@domain.com" name="email">Email</x-form.input>
               <x-form.input type="password" placeholder="********" name="password">Password</x-form.input>

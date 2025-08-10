@@ -8,6 +8,9 @@ use App\Http\Controllers\admin\DeviceController;
 use App\Http\Controllers\admin\OrderListController;
 use App\Http\Controllers\admin\ProductListController;
 use App\Http\Controllers\admin\UserListController;
+use App\Http\Controllers\user\BrandController as UserBrandController;
+use App\Http\Controllers\user\DeviceController as UserDeviceController;
+use App\Http\Controllers\user\ImageController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\admin\IsAdmin;
 use App\Http\Middleware\admin\IsGuest;
@@ -93,13 +96,22 @@ Route::get('/', [UserController::class, 'index'])->name('user');
 
 // user login
 Route::get('/sign-in', [UserController::class, 'login_view'])->name('user.login');
-Route::post('/sign-in', [UserController::class, 'login'])->name('user.login');
+Route::post('/sign-in', [UserController::class, 'login'])->name('login');
 
 // user register 
 Route::get('/sign-up', [UserController::class, 'register_view'])->name('user.register');
-Route::post('/sign-up', [UserController::class, 'register'])->name('user.register');
+Route::post('/sign-up', [UserController::class, 'register'])->name('register');
 
 // user logout 
 Route::middleware('auth')->group(function () {
     Route::get('/loguout', [UserController::class, 'logout'])->name('user.logout');
 });
+// image 
+Route::get('/images/device/{path}', [ImageController::class, 'index']);
+
+// brand collection
+Route::get('/brands/collection', [UserBrandController::class, 'index'])->name('brands.collection');
+// latest devices 
+Route::get('/brands/devices', [UserDeviceController::class, 'index'])->name('brands.devices');
+// device details
+Route::get('/brands/devices/{device}/details', [UserDeviceController::class, 'details'])->name('brands.devices.details');

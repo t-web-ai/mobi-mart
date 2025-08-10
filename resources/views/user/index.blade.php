@@ -94,10 +94,12 @@
     </div>
   </div>
   <div class="d-flex justify-content-between flex-wrap gap-2 p-2">
-    <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
+    <a href="{{ route('brands.collection') }}"
+      class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
       <span>Brand Collection</span>
     </a>
-    <a href="" class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
+    <a href="{{ route('brands.devices') }}"
+      class="fs-5 text-decoration-none btn btn-warning flex-grow-1 flex-md-grow-0">
       <span>Latest Devices</span>
     </a>
   </div>
