@@ -66,9 +66,10 @@
               </div>
             </a>
             @can('order', $variant)
-              <div class="col-4 bg-black text-center text-white d-flex justify-content-center align-items-center">
-                <i class="bi bi-cart3 fs-3"></i>
-              </div>
+              <a href="{{ route('cart.add', $variant->id) }}"
+                class="col-4 bg-black text-center text-white d-flex justify-content-center align-items-center text-decoration-none">
+                <i class="bi bi-cart3 fs-3">+</i>
+              </a>
             @endcan
           </div>
         </div>

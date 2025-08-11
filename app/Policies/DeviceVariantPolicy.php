@@ -10,6 +10,10 @@ class DeviceVariantPolicy
     /**
      * Create a new policy instance.
      */
+    public function cart(?User $user, DeviceVariant $product)
+    {
+        return $product->stock > 0;
+    }
     public function order(?User $user, DeviceVariant $deviceVariant)
     {
         return $deviceVariant->stock > 0;

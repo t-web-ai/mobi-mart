@@ -92,20 +92,25 @@
         </button>
       </div>
       <div class="col-12 col-md-6 pb-2 pt-1">
-        <div class="card text-center h-100">
+        <div class="card text-center bg-white h-100">
           <div class="card-body align-content-center">
             <img src="/assets/img/mobimart/mobimart.png" alt="" width="250" />
           </div>
         </div>
       </div>
       <div class="specifications col-12 col-md-12">
-        <div class="bg-dark text-white p-2 d-flex justify-content-between align-items-center">
-          <i class="bi bi-cart3 fs-1 ms-3"></i>
-          @can('order', [$variant])
-            <div class="btn btn-light fs-5 d-flex align-items-center justify-content-center fw-bold">
-              Add to cart
-            </div>
+        <div class="bg-secondary-subtle text-body p-2 d-flex justify-content-between align-items-center">
+          @can('order', $variant)
+            <a href="{{ route('cart.add', $variant->id) }}"
+              class="text-decoration-none text-body bg-light-subtle d-flex align-items-center shadow px-2 rounded"
+              style="height:40px;">
+              <i class="bi bi-cart3" style="cursor: pointer;font-size: 25px;">+</i>
+            </a>
           @endcan
+          <div class="btn btn-light fs-5 d-flex align-items-center justify-content-center ms-auto"
+            onclick="history.back()">
+            Go Back
+          </div>
         </div>
         <table class="fs-5 table table-bordered table-striped">
           <tbody>
@@ -114,7 +119,7 @@
             @endphp
 
             {{-- table - start --}}
-            @foreach ($variant->first()->device->getAttributes() as $key => $value)
+            @foreach ($variant->device->getAttributes() as $key => $value)
               @if (!in_array($key, $except))
                 <tr>
                   <td>{{ strtoupper(str_replace('_', ' ', $key)) }}</td>

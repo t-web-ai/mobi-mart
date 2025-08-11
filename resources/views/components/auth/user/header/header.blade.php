@@ -11,9 +11,15 @@
     </div>
     <div class="d-flex align-items-center navbar navbar-expand">
       <div class="p-2 fs-5 navbar-brand">
-        <a href="">
-          <i class="bi bi-cart-dash text-body fs-2"></i>
+        <a href="{{ route('cart.view') }}" class="text-decoration-none">
+          <span class="bi bi-cart-dash text-body fs-2 position-relative">
+            @if (!empty(session('cart')))
+              <span class="badge position-absolute bg-danger text-white rounded-pill fs-5"
+                style="bottom:50%; left:50%; font-size: 10px !important;">{{ collect(session('cart'))->sum('quantity') }}</span>
+            @endif
+          </span>
         </a>
+
       </div>
       @guest
         <div class="p-2 fs-5 navbar-brand">

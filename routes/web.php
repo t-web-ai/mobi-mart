@@ -8,13 +8,14 @@ use App\Http\Controllers\admin\DeviceController;
 use App\Http\Controllers\admin\OrderListController;
 use App\Http\Controllers\admin\ProductListController;
 use App\Http\Controllers\admin\UserListController;
+use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\BrandController as UserBrandController;
 use App\Http\Controllers\user\DeviceController as UserDeviceController;
 use App\Http\Controllers\user\ImageController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\admin\IsAdmin;
 use App\Http\Middleware\admin\IsGuest;
-use App\Models\Brand;
+use App\Models\DeviceVariant;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->middleware([IsGuest::class])->group(function () {
@@ -115,3 +116,9 @@ Route::get('/brands/collection', [UserBrandController::class, 'index'])->name('b
 Route::get('/brands/devices', [UserDeviceController::class, 'index'])->name('brands.devices');
 // device details
 Route::get('/brands/devices/{variant}/details', [UserDeviceController::class, 'details'])->name('brands.devices.details');
+
+// add to cart 
+Route::get('/cart/{product}/add', [CartController::class, 'store'])->name('cart.add')->can('cart', 'product');
+Route::get('/cart/view', [CartController::class, 'index'])->name('cart.view');
+Route::get('/cart/{product}/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/{product}/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
