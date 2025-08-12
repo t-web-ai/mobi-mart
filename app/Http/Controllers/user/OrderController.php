@@ -107,4 +107,11 @@ class OrderController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    public function cancel(Order $order)
+    {
+        $order->status = "cancelled";
+        $order->save();
+        return back();
+    }
 }

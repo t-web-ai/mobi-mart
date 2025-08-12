@@ -98,7 +98,20 @@
                       @endforeach
                     @endforeach
                   </ul>
-                  <p class="fs-5"><strong>Total:</strong> {{ number_format($order->total_price, 0) }} MMK</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="fs-5"><strong>Total:</strong>
+                      {{ number_format($order->total_price, 0) }} MMK
+                    </div>
+                    @can('cancel', $order)
+                      <form action="{{ route('orders.cancel', $order->id) }}" method="post"
+                        id="cancel-{{ $order->id }}">
+                        @csrf
+                        @method('PUT')
+                      </form>
+                      <button class="btn btn-danger fs-5" form="cancel-{{ $order->id }}">Cancel</button>
+                    @endcan
+                  </div>
+
                 </div>
               </div>
             </div>

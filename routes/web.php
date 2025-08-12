@@ -112,6 +112,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/orders/order', [OrderController::class, 'order'])->name('orders.order');
     Route::get('/orders/view', [OrderController::class, 'index'])->name('orders.view');
     Route::get('/orders/form', [OrderController::class, 'form'])->name('orders.form');
+
+    // cancel order
+    Route::put('/orders/{order}/cancel', [OrderController::class, 'cancel'])->can('cancel', 'order')->name('orders.cancel');
 });
 // image 
 Route::get('/images/device/{path}', [ImageController::class, 'index']);
