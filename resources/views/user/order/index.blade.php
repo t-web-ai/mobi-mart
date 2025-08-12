@@ -87,12 +87,15 @@
                   <ul>
                     @foreach ($order->device_variants as $device_variant)
                       @php
-                        $variant_order = $device_variant->device_variant_orders->where('order_id', $order->id)->first();
+                        $variant_orders = $device_variant->device_variant_orders->where('order_id', $order->id);
                       @endphp
-                      <li class="fs-5">{{ $device_variant->device->name }} (Qty:
-                        {{ $variant_order->first()->quantity }})
-                        - {{ number_format($variant_order->price, 0) }} MMK
-                      </li>
+                      @foreach ($variant_orders as $variant_order)
+                        <li class="fs-5">{{ $device_variant->device->name }} {{ $device_variant->ram }}
+                          {{ $device_variant->storage }} (Qty:
+                          {{ $variant_order->quantity }})
+                          - {{ number_format($variant_order->price * $variant_order->quantity, 0) }} MMK
+                        </li>
+                      @endforeach
                     @endforeach
                   </ul>
                   <p class="fs-5"><strong>Total:</strong> {{ number_format($order->total_price, 0) }} MMK</p>
