@@ -58,10 +58,9 @@
             {{ number_format(array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cart)), 0) }} MMK
           </span>
         </h4>
-        <form action="{{ route('orders.order') }}" method="post" id="checkout">@csrf</form>
-        <button class="btn btn-warning fs-5" form="checkout">
+        <a class="btn btn-warning fs-5" href="{{ route('orders.form') }}">
           Checkout
-        </button>
+        </a>
       </div>
     @else
       <div class="alert alert-warning text-center fs-5 my-5">

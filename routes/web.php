@@ -111,6 +111,7 @@ Route::middleware('auth')->group(function () {
     // order controlling 
     Route::post('/orders/order', [OrderController::class, 'order'])->name('orders.order');
     Route::get('/orders/view', [OrderController::class, 'index'])->name('orders.view');
+    Route::get('/orders/form', [OrderController::class, 'form'])->name('orders.form');
 });
 // image 
 Route::get('/images/device/{path}', [ImageController::class, 'index']);
