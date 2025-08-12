@@ -22,7 +22,7 @@ class UserListController extends Controller
             ->when($filter == "address", function ($q) use ($search) {
                 $q->where("address", "like", "%$search%");
             })
-            ->paginate(2)
+            ->paginate(10)
             ->appends(["q" => $search, "filter" => $filter]);
         return view("admin.auth.manage.users", [
             "users" => $users,

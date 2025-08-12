@@ -22,7 +22,7 @@ class OrderListController extends Controller
         Session::flash("update", [
             "brand" => $brand
         ]);
-        $orders = Order::with('device_variants.device', 'device_variant_orders', 'user')
+        $orders = Order::with('device_variants.device', 'device_variants.device_variant_orders', 'device_variant_orders', 'user')
             ->when($brand, function ($q) use ($brand) {
                 $q->whereHas('device_variants', function ($q) use ($brand) {
                     $q->where('device_id', $brand);

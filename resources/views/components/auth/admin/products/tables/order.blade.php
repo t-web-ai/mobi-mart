@@ -5,6 +5,7 @@
       <tr class="text-center fs-5">
         <th>ID</th>
         <th>User</th>
+        <th>Phone</th>
         <th>Device</th>
         <th>Shipping Address</th>
         <th>Status</th>
@@ -15,12 +16,17 @@
         <tr>
           <x-auth.admin.products.data data="{{ $order->id }}" />
           <x-auth.admin.products.data data="{{ $order->user->name ?? 'Deleted Account' }}" />
+          <x-auth.admin.products.data data="{{ $order->user->phone ?? '**********' }}" />
           <td>
             @foreach ($order->device_variants as $item)
-              <div
-                class="text-truncate small bg-success-subtle py-1 px-4 rounded-pill text-center mt-1 d-inline-block fs-5">
-                {{ $item->device->name }}
-              </div><br>
+              <div class="input-group d-flex flex-nowrap mb-1">
+                <button
+                  class="btn text-truncate small btn-success py-1 px-4 rounded-start-pill text-center  d-inline-block fs-5">
+                  {{ $item->device->name }}
+                </button>
+                <button
+                  class="btn btn-dark py-1 px-3 rounded-end-pill fs-5">{{ $item->device_variant_orders->where('order_id', $order->id)->first()->quantity }}</button>
+              </div>
             @endforeach
           </td>
           <x-auth.admin.products.data data="{{ $order->shipping_address }}" />
@@ -28,7 +34,7 @@
           <x-auth.admin.products.data data="{{ $order->created_at->diffForHumans() }}" />
           <x-auth.admin.products.data>
             <div class="d-flex justify-content-end gap-2 m-auto">
-              @if ($order->status != 'confirmed')
+              @if ($order->status == 'pending')
                 <x-auth.admin.products.modal logo="bi bi-check-square" background="btn-warning" header="Confirm Box"
                   target="update_id_{{ $order->id }}">
                   <div class="d-flex justify-content-between align-items-center">
