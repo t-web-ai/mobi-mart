@@ -12,6 +12,7 @@ use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\BrandController as UserBrandController;
 use App\Http\Controllers\user\DeviceController as UserDeviceController;
 use App\Http\Controllers\user\ImageController;
+use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\admin\IsAdmin;
 use App\Http\Middleware\admin\IsGuest;
@@ -106,6 +107,10 @@ Route::post('/sign-up', [UserController::class, 'register'])->name('register');
 // user logout 
 Route::middleware('auth')->group(function () {
     Route::get('/loguout', [UserController::class, 'logout'])->name('user.logout');
+
+    // order controlling 
+    Route::post('/orders/order', [OrderController::class, 'order'])->name('orders.order');
+    Route::get('/orders/view', [OrderController::class, 'index'])->name('orders.view');
 });
 // image 
 Route::get('/images/device/{path}', [ImageController::class, 'index']);

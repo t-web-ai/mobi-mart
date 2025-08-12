@@ -24,10 +24,10 @@
                 <a href="{{ route('user') }}" class="list-group-item list-group-item-action fs-5">
                   <i class="bi bi-person-circle me-2"></i> Edit Profile
                 </a>
-                <a href="{{ route('user') }}" class="list-group-item list-group-item-action fs-5">
+                <a href="{{ route('cart.view') }}" class="list-group-item list-group-item-action fs-5">
                   <i class="bi bi-cart me-2"></i> View Cart
                 </a>
-                <a href="{{ route('user') }}" class="list-group-item list-group-item-action fs-5">
+                <a href="{{ route('orders.view') }}" class="list-group-item list-group-item-action fs-5">
                   <i class="bi bi-clock-history me-2"></i> View Order History
                 </a>
                 <a href="{{ route('user.logout') }}" class="list-group-item list-group-item-action text-danger fs-5">
