@@ -72,7 +72,7 @@ class OrderListController extends Controller
     {
         $sale = DeviceVariantOrder::sum('quantity');
         $order = Order::count('id');
-        $total = DeviceVariantOrder::sum('price');
+        $total = Order::where('status', 'confirmed')->sum('total_price');
         return view("admin.auth.manage.sales", [
             'sale' => $sale,
             'order' => $order,

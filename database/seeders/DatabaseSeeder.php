@@ -33,9 +33,9 @@ class DatabaseSeeder extends Seeder
             DeviceSeeder::class,
             DeviceVariantSeeder::class,
             DeviceVariantImageSeeder::class,
-            DeviceVariantOrderSeeder::class,
-            OrderSeeder::class,
-            ReviewSeeder::class
+            // DeviceVariantOrderSeeder::class,
+            // OrderSeeder::class,
+            // ReviewSeeder::class
         ]);
     }
 }

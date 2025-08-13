@@ -5,7 +5,11 @@
 @section('title', $title)
 
 @section('customize-css')
-
+  <style>
+    body::-webkit-scrollbar {
+      width: 0;
+    }
+  </style>
 @endsection
 @section('main')
   <x-auth.user.header.header />
