@@ -13,7 +13,7 @@
 
   .carousel-inner {
     height: 50vh;
-    padding: 3px;
+    border-radius: 0 0 5px 5px;
   }
 
   @media screen and (min-width: 576px) {
@@ -27,7 +27,7 @@
     height: 100%;
     background-color: white;
     box-shadow: 0px 0px 4px gray;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     padding: 10px;
   }
 
@@ -61,7 +61,11 @@
   <div class="container-fluid">
     <div class="row py-2 flex" id="main">
       <div class="carousel slide col-12 col-md-6 flex" data-bs-ride="carousel" id="item">
-        <div class="carousel-inner">
+        <div class="d-flex justify-content-between fs-5 p-1 bg-secondary-subtle rounded-top px-3">
+          <div>Price</div>
+          <div>{{ $variant->price }} MMK</div>
+        </div>
+        <div class="carousel-inner border border-secondary-subtle">
           {{-- image - start --}}
           @foreach ($variant->device_variant_images as $key => $image)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
@@ -70,7 +74,7 @@
           @endforeach
           {{-- image - end --}}
         </div>
-        <div class="carousel-indicators position-relative">
+        <div class="carousel-indicators position-relative m-0 w-100">
           {{-- indicators - start --}}
           @foreach ($variant->device_variant_images as $key => $image)
             <img data-bs-target="#item" data-bs-slide-to="{{ $key }}"
@@ -91,7 +95,7 @@
           </div>
         </button>
       </div>
-      <div class="col-12 col-md-6 pb-2 pt-1">
+      <div class="col-12 col-md-6 pb-2">
         <div class="card text-center bg-white h-100">
           <div class="card-body align-content-center">
             <img src="/assets/img/mobimart/mobimart.png" alt="" width="250" />

@@ -54,7 +54,10 @@
                 <div class="border-2 rounded-pill shadow me-auto"
                   style="width: 20px; height: 20px; background-color:{{ $variant->color->code }};"></div>
               </div>
-
+            </div>
+            <div class="w-100 fs-5 d-flex justify-content-between">
+              <div>Price</div>
+              <div>{{ $variant->price }} MMK</div>
             </div>
           </div>
           {{-- specification - end --}}
