@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DeviceController;
 use App\Http\Controllers\admin\OrderListController;
 use App\Http\Controllers\admin\ProductListController;
 use App\Http\Controllers\admin\UserListController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\user\CartController;
 use App\Http\Controllers\user\BrandController as UserBrandController;
 use App\Http\Controllers\user\DeviceController as UserDeviceController;
@@ -115,6 +116,10 @@ Route::middleware('auth')->group(function () {
 
     // cancel order
     Route::put('/orders/{order}/cancel', [OrderController::class, 'cancel'])->can('cancel', 'order')->name('orders.cancel');
+
+    // edit profile
+    Route::get('/profile/edit', [ProfileController::class, 'index'])->name('profile.edit');
+    Route::put('/profile/edit', [ProfileController::class, 'update'])->name('profile.edit');
 });
 // image 
 Route::get('/images/device/{path}', [ImageController::class, 'index']);

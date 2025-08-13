@@ -21,7 +21,7 @@
             </div>
             <div class="modal-body">
               <div class="list-group">
-                <a href="{{ route('user') }}" class="list-group-item list-group-item-action fs-5">
+                <a href="{{ route('profile.edit') }}" class="list-group-item list-group-item-action fs-5">
                   <i class="bi bi-person-circle me-2"></i> Edit Profile
                 </a>
                 <a href="{{ route('cart.view') }}" class="list-group-item list-group-item-action fs-5">
