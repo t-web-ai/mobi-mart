@@ -20,7 +20,7 @@ class AdminController extends Controller
         $products = $this->format(DeviceVariant::count());
         $users = $this->format(User::count());
         $orders = $this->format(Order::count());
-        $sales = $this->format(Order::sum('total_price'));
+        $sales = $this->format(Order::where('status', 'confirmed')->sum('total_price'));
         return view("admin.auth.manage.dashboard", [
             "products" => $products,
             "users" => $users,
