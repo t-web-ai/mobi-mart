@@ -63,7 +63,7 @@
       <div class="carousel slide col-12 col-md-6 flex" data-bs-ride="carousel" id="item">
         <div class="d-flex justify-content-between fs-5 p-1 bg-secondary-subtle rounded-top px-3">
           <div>Price</div>
-          <div>{{ $variant->price }} MMK</div>
+          <div>{{ number_format($variant->price, 0) }} MMK</div>
         </div>
         <div class="carousel-inner border border-secondary-subtle">
           {{-- image - start --}}

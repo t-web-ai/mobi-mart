@@ -57,7 +57,7 @@
             </div>
             <div class="w-100 fs-5 d-flex justify-content-between">
               <div>Price</div>
-              <div>{{ $variant->price }} MMK</div>
+              <div>{{ number_format($variant->price, 0) }} MMK</div>
             </div>
           </div>
           {{-- specification - end --}}

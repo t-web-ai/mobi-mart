@@ -13,7 +13,7 @@
         @foreach ($cart as $id => $item)
           <div
             class="d-flex justify-content-center row bg-white text-dark p-3 py-4 mb-2 rounded border border-2 border-body">
-            <div class="d-flex justify-content-center col-12 row mb-2">
+            <div class="d-flex justify-content-center col-12 row mb-2 h-100">
               <div class="col-8 col-md-4 col-lg-2 mb-3">
                 <img
                   src="{{ url('images/' . $item['info']->device_variant_images->where('is_main', true)->first()->image_path) }}"
