@@ -8,8 +8,8 @@
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
-        <th style="width: 1px">Action</th>
         <th>Created</th>
+        <th style="width: 1px">Action</th>
       </tr>
       @foreach ($users as $user)
         <tr>

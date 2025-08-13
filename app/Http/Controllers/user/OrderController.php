@@ -27,7 +27,7 @@ class OrderController extends Controller
                     'device_variant_orders'
                 ]);
             }, 'device_variant_orders'
-        ])->get();
+        ])->orderByDesc('id')->get();
         return view('user.order.index', [
             "orders" => $orders
         ]);

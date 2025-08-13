@@ -98,7 +98,7 @@
                       @endforeach
                     @endforeach
                   </ul>
-                  <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex justify-content-between align-items-center pe-4">
                     <div class="fs-5"><strong>Total:</strong>
                       {{ number_format($order->total_price, 0) }} MMK
                     </div>
@@ -108,7 +108,7 @@
                         @csrf
                         @method('PUT')
                       </form>
-                      <button class="btn btn-danger fs-5" form="cancel-{{ $order->id }}">Cancel</button>
+                      <button class="btn btn-danger py-0" form="cancel-{{ $order->id }}">Cancel</button>
                     @endcan
                   </div>
 
