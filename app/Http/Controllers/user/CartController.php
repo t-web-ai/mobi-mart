@@ -17,20 +17,24 @@ class CartController extends Controller
 
     public function store(DeviceVariant $product)
     {
+        // Session::forget('cart');
+        // return;
         $cart = Session::get('cart', []);
 
         if (isset($cart[$product->id])) {
             $cart[$product->id]['quantity']++;
+            // $cart[$product->id]['price'] = $product->price;
+            // $cart[$product->id]['color'] = $product->color;
         } else {
             $cart[$product->id] = [
                 'variant_id' => $product->id,
-                'name' => $product->device->name,
-                'ram' => $product->ram,
-                'storage' => $product->storage,
-                'color' => $product->color,
+                // 'name' => $product->device->name,
+                // 'ram' => $product->ram,
+                // 'storage' => $product->storage,
+                // 'color' => $product->color,
                 'quantity' => 1,
-                'image' => $product->device_variant_images->where('is_main', true),
-                'price' => $product->price,
+                // 'image' => $product->device_variant_images->where('is_main', true),
+                // 'price' => $product->price,
                 'info' => $product
             ];
         }

@@ -15,19 +15,21 @@
             class="d-flex justify-content-center row bg-white text-dark p-3 py-4 mb-2 rounded border border-2 border-body">
             <div class="d-flex justify-content-center col-12 row mb-2">
               <div class="col-8 col-md-4 col-lg-2 mb-3">
-                <img src="{{ url('images/' . $item['image'][0]->image_path) }}" style="width:100%">
+                <img
+                  src="{{ url('images/' . $item['info']->device_variant_images->where('is_main', true)->first()->image_path) }}"
+                  style="width:100%">
               </div>
               <div class="col-12 col-md-8 col-lg-10 fs-5 d-flex flex-column">
                 <div class="mb-2">
-                  {{ $item['name'] }} ({{ $item['color']->name }})
+                  {{ $item['info']->device->name }} ({{ $item['info']->color->name }})
                 </div>
                 <div class="mb-2">
-                  {{ $item['ram'] }} {{ $item['storage'] }}
+                  {{ $item['info']->ram }} {{ $item['info']->storage }}
                 </div>
                 <div class="row w-100">
                   <div class="col-12 col-lg-4 d-flex align-items-center">
                     <div class="fs-5 text-warning">
-                      {{ number_format($item['price'] * $item['quantity'], 0) }} MMK</div>
+                      {{ number_format($item['info']->price * $item['quantity'], 0) }} MMK</div>
                   </div>
                   <div class="col-6 col-lg-4 mt-2">
                     <div class="d-flex justify-content-between rounded border border-2">
@@ -55,7 +57,8 @@
       <div class="d-flex justify-content-between align-items-center mt-4 text-center container-fluid">
         <h4>Total:
           <span class="text-success fw-bold">
-            {{ number_format(array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cart)), 0) }} MMK
+            {{ number_format(array_sum(array_map(fn($item) => $item['info']->price * $item['quantity'], $cart)), 0) }}
+            MMK
           </span>
         </h4>
         <a class="btn btn-warning fs-5" href="{{ route('orders.form') }}">
