@@ -39,6 +39,7 @@ class OrderListController extends Controller
             ->when($status, function ($q) use ($status) {
                 $q->where("status", $status);
             })
+            ->orderBy('id', 'desc')
             ->paginate(10)
             ->appends([
                 'q' => $search,

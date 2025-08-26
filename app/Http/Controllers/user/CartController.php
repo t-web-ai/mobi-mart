@@ -28,10 +28,10 @@ class CartController extends Controller
         } else {
             $cart[$product->id] = [
                 'variant_id' => $product->id,
-                // 'name' => $product->device->name,
-                // 'ram' => $product->ram,
-                // 'storage' => $product->storage,
-                // 'color' => $product->color,
+                'name' => $product->device->name,
+                'ram' => $product->ram,
+                'storage' => $product->storage,
+                'color' => $product->color,
                 'quantity' => 1,
                 // 'image' => $product->device_variant_images->where('is_main', true),
                 // 'price' => $product->price,
