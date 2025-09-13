@@ -83,13 +83,21 @@ class OrderListController extends Controller
     public function popular()
     {
         $variant = DeviceVariantOrder::with('device_variant')->get();
-        $popular = $variant->groupBy('device_variant_id')->map(function ($item) {
-            return [
-                "device" => DeviceVariant::find($item->first()->device_variant_id)->device->name,
-                "quantity" => $item->sum('quantity'),
-                "sale" => $item->sum('price')
-            ];
-        })->sortByDesc(['quantity', 'sale']);
+        $popular = $variant->groupBy('device_variant_id')
+            ->map(function ($item) {
+                return [
+                    "id" => $item->first()->device_variant_id,
+                    "device" => DeviceVariant::find($item->first()->device_variant_id)?->device->name,
+                    "ram" => DeviceVariant::find($item->first()->device_variant_id)?->ram,
+                    "storage" => DeviceVariant::find($item->first()->device_variant_id)?->storage,
+                    "quantity" => $item->sum('quantity'),
+                    "sale" => $item->sum('price') * $item->sum('quantity')
+                ];
+            })
+            ->filter(function ($item) {
+                if (DeviceVariant::find($item["id"])) return $item;
+            })
+            ->sortByDesc(['quantity', 'sale']);
         return view("admin.auth.manage.popular", [
             "devices" => $popular
         ]);
